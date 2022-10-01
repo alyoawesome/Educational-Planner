@@ -11,6 +11,11 @@ This game can be played by **anyone**, but will mostly be targeted towards child
 to be boring as a result. This project is of interest to me because I've always wanted to code a space-themed game but was not sure how to start. I believe that this personal project
 is the perfect opportunity to help me achieve this goal. 
 
+## User Stories:
+- As a user, I want to be able to shoot projectiles from my spaceship
+- As a user, I want to be able to move my spaceship up, down, left, and right
+- As a user, I want to be able to add health to my player when I collect health pickups
+-  As a user, I want to be able to destroy asteroids using my projectiles
 
 
   
