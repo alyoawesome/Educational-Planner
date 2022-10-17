@@ -1,21 +1,25 @@
-# Space Escape
+# Educational Planner 
 
 ## CPSC 210 – *Personal Project*
 
-This application is a game where the user plays as a spaceship trying to escape from an enemy base. There will be enemy spaceships shooting projectiles,
-and asteroids falling down that will try to damage the player. To defend themselves, the player can shoot projectiles from their spaceship, move in all directions
-(up, down, left, and right), and will be able to gain back their health by collecting health pickups that fall occasionally. After a set amount of time, a boss will spawn and have significantly better 
-stats than the enemy spaceships. Once the player defeats the boss, the player will have escaped the enemy base and beat the game. 
+This application is an educational planner that allows students to keep track of their overall averages
+in their course using the grades they input from each of the course's assignments. 
     
-This game can be played by **anyone**, but will mostly be targeted towards children because the game mechanics will not be too advanced and older players may find the game 
-to be boring as a result. This project is of interest to me because I've always wanted to code a space-themed game but was not sure how to start. I believe that this personal project
-is the perfect opportunity to help me achieve this goal. 
+This project is of interest to me because I'm aware that some schools may not offer software that allows their 
+students to track their progress and evaluate their academic weak points. In today's educational environment, being
+able to keep track of your grades and continuously improve academically is crucial to getting accepted
+into a good university, which may eventually help in procuring a successful career. 
+
+This application can be used by **any** student that wants to keep track of their academical progress,
+but will mostly be targeted towards students that don't already have grade tracking software provided by their school
+because their school's application may offer other features more specific to their students.
 
 ## User Stories:
-- As a user, I want to be able to shoot projectiles from my spaceship
-- As a user, I want to be able to move my spaceship up, down, left, and right
-- As a user, I want to be able to add health to my player when I collect health pickups
--  As a user, I want to be able to destroy asteroids using my projectiles
+- As a user, I want to be able to add any assignment to my courses
+- As a user, I want to be able to input a grade for each of my assignments
+- As a user, I want to be able to input a specific name for each of my assignments (Eg: Project, Midterm, Homework)
+- As a user, I want to be able to see the overall average for my course based on the grades of all of my assignments 
+for that course
 
 
   
