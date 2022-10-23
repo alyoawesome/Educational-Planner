@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CourseTest {
     private Course courseTest;
@@ -54,6 +52,33 @@ public class CourseTest {
         courseTest.addAssignment(assignmentTest1);
         assertEquals(1, courseTest.getAssignments().size());
         assertTrue(courseTest.getAssignments().contains(assignmentTest1));
+
+    }
+
+    @Test
+    public void deleteAssignmentTest() {
+        courseTest.addAssignment(assignmentTest1);
+        assertEquals(1, courseTest.getAssignments().size());
+        assertTrue(courseTest.getAssignments().contains(assignmentTest1));
+        courseTest.deleteAssignment(assignmentTest1.getName());
+        assertEquals(0, courseTest.getAssignments().size());
+        assertFalse(courseTest.getAssignments().contains(assignmentTest1));
+    }
+
+    @Test
+    public void deleteMultipleAssignmentsTest() {
+        courseTest.addAssignment(assignmentTest1);
+        assertEquals(1, courseTest.getAssignments().size());
+        assertTrue(courseTest.getAssignments().contains(assignmentTest1));
+        courseTest.addAssignment(assignmentTest2);
+        assertEquals(2, courseTest.getAssignments().size());
+        assertTrue(courseTest.getAssignments().contains(assignmentTest2));
+        courseTest.deleteAssignment(assignmentTest2.getName());
+        assertEquals(1, courseTest.getAssignments().size());
+        assertFalse(courseTest.getAssignments().contains(assignmentTest2));
+        courseTest.deleteAssignment(assignmentTest1.getName());
+        assertEquals(0, courseTest.getAssignments().size());
+        assertFalse(courseTest.getAssignments().contains(assignmentTest1));
 
     }
 

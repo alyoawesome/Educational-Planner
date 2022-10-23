@@ -20,7 +20,7 @@ public class Course {
 
 
     // MODIFIES: this
-    // EFFECTS: adds assignment to the list of assignments if not already in the list, else provides an error
+    // EFFECTS: adds assignment to the course's list of assignments if not already in the list, else provides an error
     //          saying that the assignments has already been added
     public void addAssignment(Assignment assignment) {
         if (!this.assignments.contains(assignment)) {
@@ -28,6 +28,20 @@ public class Course {
         } else {
             System.out.println("ERROR, assignment already in course!");
         }
+    }
+
+    // REQUIRES: The assignment the user wants to delete must already be in the course's list of assignments
+    // MODIFIES: this
+    // EFFECTS: deletes an assignment from the course's list of assignments
+    public void deleteAssignment(String assignment) {
+        int assignmentToBeDeletedIndex = 0;
+        for (Assignment a : this.assignments) {
+            String name = a.getName();
+            if (name.equals(assignment)) {
+                assignmentToBeDeletedIndex = assignmentToBeDeletedIndex + this.assignments.indexOf(a);
+            }
+        }
+        this.assignments.remove(assignmentToBeDeletedIndex);
     }
 
     // MODIFIES: this

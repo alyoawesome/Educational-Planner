@@ -44,6 +44,7 @@ public class EducationalPlannerApp {
         System.out.println("\nSelect from:");
         System.out.println("\tc -> add course");
         System.out.println("\ta -> add assignment");
+        System.out.println("\tdel -> delete assignment");
         System.out.println("\tavg -> calculate average");
         System.out.println("\tq -> quit");
     }
@@ -58,6 +59,8 @@ public class EducationalPlannerApp {
             addAssignment();
         } else if (command.equals("avg")) {
             calculateOverallAverage();
+        } else if (command.equals("del")) {
+            deleteAssignment();
         } else {
             System.out.println("Incorrect keyword, try again!");
         }
@@ -94,13 +97,31 @@ public class EducationalPlannerApp {
         courses.get(courseNum).addAssignment(assignment);
     }
 
+    // MODIFIES: this
+    // EFFECTS: deletes an assignment in a course of user's choosing
+    private void deleteAssignment() {
+        System.out.println("What number course is this assignment in?");
+        int courseNum = Integer.parseInt(input.next());
+        Course selectedCourse = courses.get(courseNum);
+        System.out.println("Enter the name of the assignment you want to delete");
+        String name = input.next();
+        selectedCourse.deleteAssignment(name);
+    }
+
+
+
     // REQUIRES: The number of course selected must be >=0 and <= courses.size()
     // EFFECTS: shows the user the overall average for a course of their choosing
     private void calculateOverallAverage() {
         System.out.println("What number course do you want to know your average?");
         int courseNum = Integer.parseInt(input.next());
-        double overallAverage = courses.get(courseNum).calculateOverallAverage();
-        System.out.println(courses.get(courseNum).getCourseName() + ":" + overallAverage + "%");
+        Course selectedCourse = courses.get(courseNum);
+        double overallAverage = selectedCourse.calculateOverallAverage();
+        System.out.println(selectedCourse.getCourseName() + ":" + " " + overallAverage + "%");
+        System.out.println("Assignments in this course:");
+        for (Assignment assignment: selectedCourse.getAssignments()) {
+            System.out.println(assignment.getName() + ":" + " " + assignment.getGrade() + "%");
+        }
 
     }
 

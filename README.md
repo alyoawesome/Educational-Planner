@@ -3,7 +3,7 @@
 ## CPSC 210 – *Personal Project*
 
 This application is an educational planner that allows students to keep track of their overall averages
-in their course using the grades they input from each of the course's assignments. 
+in their courses using the grades they input from each of the course's assignments. 
     
 This project is of interest to me because I'm aware that some schools may not offer software that allows their 
 students to track their progress and evaluate their academic weak points. In today's educational environment, being
@@ -16,10 +16,11 @@ because their school's application may offer other features more specific to the
 
 ## User Stories:
 - As a user, I want to be able to add any assignment to my courses
-- As a user, I want to be able to input a grade for each of my assignments
-- As a user, I want to be able to input a specific name for each of my assignments (Eg: Project, Midterm, Homework)
+- As a user, I want to be able to input a grade and specific name 
+(Eg: Project, Midterm, Homework) for each of my assignments
+- As a user, I want to be able to delete any assignments that I've already inputted into my courses
 - As a user, I want to be able to see the overall average for my course based on the grades of all of my assignments 
-for that course
+for that course, along with the grades of each of the assignments I put into the course.
 
 
   
