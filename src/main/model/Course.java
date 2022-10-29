@@ -1,9 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
+//CITATION: Reused code from JsonSerializationDemo's WorkRoom Class for the methods in this class
+
 //Represents a course having a name, an overall average (in percent), and a list of assignments
-public class Course {
+public class Course implements Writable {
     private String name;
     private double overallAverage;
     private ArrayList<Assignment> assignments;
@@ -69,6 +75,25 @@ public class Course {
 
     public ArrayList<Assignment> getAssignments() {
         return this.assignments;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("assignments", assignmentsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns assignments in this course as a JSON array
+    private JSONArray assignmentsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Assignment a : assignments) {
+            jsonArray.put(a.toJson());
+        }
+
+        return jsonArray;
     }
 
 

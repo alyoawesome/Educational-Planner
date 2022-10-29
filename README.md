@@ -21,6 +21,10 @@ because their school's application may offer other features more specific to the
 - As a user, I want to be able to delete any assignments that I've already inputted into my courses
 - As a user, I want to be able to see the overall average for my course based on the grades of all of my assignments 
 for that course, along with the grades of each of the assignments I put into the course.
+- As a user, I want to be able to save all my courses, assignments, and the grades for those 
+assignments to file
+- As a user, I want to be able to load all my courses, assignments, and grades for those
+assignments from file
 
 
   

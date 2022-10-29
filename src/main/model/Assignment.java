@@ -1,7 +1,14 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+//CITATION: Reused code from JsonSerializationDemo's Thingy Class for the methods in this class
+
+
+
 // Represents an assignment having a name and grade (in percent)
-public class Assignment {
+public class Assignment implements Writable {
     private String name;
     private double grade;
 
@@ -21,6 +28,14 @@ public class Assignment {
 
     public double getGrade() {
         return this.grade;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("grade", grade);
+        return json;
     }
         
 }

@@ -1,0 +1,28 @@
+{"courses": [
+    {
+        "assignments": [
+            {
+                "grade": 99,
+                "name": "test"
+            },
+            {
+                "grade": 98,
+                "name": "project"
+            }
+        ],
+        "name": "science"
+    },
+    {
+        "assignments": [
+            {
+                "grade": 97,
+                "name": "midterm"
+            },
+            {
+                "grade": 96,
+                "name": "assignment"
+            }
+        ],
+        "name": "math"
+    }
+]}
