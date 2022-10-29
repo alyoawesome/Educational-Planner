@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 //Educational Planner application
 public class EducationalPlannerApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/courses.json";
     private Scanner input;
     private ArrayList<Course> courses = new ArrayList<>();
     private JsonWriter jsonWriter;
