@@ -44,7 +44,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses list of courses from JSON object and returns it
+    // EFFECTS: parses list of courses from JSON object and returns the list of courses
     private ArrayList<Course> parseCourses(JSONObject jsonObject) {
         JSONArray courses = jsonObject.getJSONArray("courses");
         ArrayList<Course> courseList = new ArrayList<>();
@@ -56,7 +56,7 @@ public class JsonReader {
     }
 
     // MODIFIES: courses
-    // EFFECTS: parses course from JSON object and adds them to list of assignments
+    // EFFECTS: parses course from JSON object and adds them to list of courses
     private void addCourse(JSONObject jsonObject, ArrayList<Course> courses) {
         String name = jsonObject.getString("name");
         JSONArray assignments = jsonObject.getJSONArray("assignments");
@@ -65,7 +65,8 @@ public class JsonReader {
     }
 
     // MODIFIES: assignmentList
-    // EFFECTS: parses assignments from JSON object and adds them to list of assignments
+    // EFFECTS: parses assignments from JSON object, adds them to list of assignments, and returns
+    //          the list of assignments
     private ArrayList<Assignment> addAssignments(JSONArray assignments) {
         ArrayList<Assignment> assignmentList = new ArrayList<>();
         for (Object json : assignments) {
