@@ -336,8 +336,8 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
     // MODIFIES: this
     // EFFECTS: deletes an assignment in a course of user's choosing
     private void deleteAssignment(String textA) {
-        String status = courses.get(index).deleteAssignment(textA);
-        message = "Delete Assignment :" + textA + " " + status;
+        courses.get(index).deleteAssignment(textA);
+        message = "Delete Assignment :" + textA;
     }
 
     // EFFECTS: saves the Courses to file

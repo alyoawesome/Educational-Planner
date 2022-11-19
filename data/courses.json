@@ -5,13 +5,16 @@
     },
     {
         "assignments": [{
-            "grade": 99,
-            "name": "test"
+            "grade": 95,
+            "name": "midterm"
         }],
         "name": "math"
     },
     {
-        "assignments": [],
+        "assignments": [{
+            "grade": 93,
+            "name": "midterm"
+        }],
         "name": "science"
     }
 ]}
