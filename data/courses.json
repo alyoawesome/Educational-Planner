@@ -1,36 +1,17 @@
 {"courses": [
     {
-        "assignments": [
-            {
-                "grade": 98,
-                "name": "test"
-            },
-            {
-                "grade": 99,
-                "name": "project"
-            },
-            {
-                "grade": 98,
-                "name": "test"
-            },
-            {
-                "grade": 90,
-                "name": "hello"
-            }
-        ],
-        "name": "science"
+        "assignments": [],
+        "name": "Biology"
     },
     {
-        "assignments": [
-            {
-                "grade": 99,
-                "name": "st"
-            },
-            {
-                "grade": 98,
-                "name": "yooooo"
-            }
-        ],
+        "assignments": [{
+            "grade": 99,
+            "name": "test"
+        }],
         "name": "math"
+    },
+    {
+        "assignments": [],
+        "name": "science"
     }
 ]}

@@ -27,4 +27,15 @@ assignments to file
 assignments from file
 
 
+# Instructions for Grader
+
+- You can generate the first required event related to adding Xs to a Y by clicking on the 
+"Add Assignment & Grade" Button
+- You can generate the second required event related to adding Xs to a Y by clicking on a course 
+in the course dropdown panel and seeing the assignments in that selected course, along with the course's overall grade
+- You can locate my visual component by running the application and seeing that there is an image that serves as a 
+loading screen before the user is shown the Educational Planner GUI
+- You can save the state of my application by pressing on the "Save All Data" button
+- You can reload the state of my application by pressing on the "Load All Data" button
+
   

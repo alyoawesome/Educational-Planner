@@ -13,7 +13,7 @@ import java.util.Scanner;
 //CITATIONS: Learned to use Scanner classes and manipulate user input from the TellerApp.
 //          Borrowed very similar code from TellerApp for the methods runEducationalPlanner,
 //          displayMenu, and processCommand.
-//          Learned to manipulate and implement save and load functionality from the JsonSerializationDemo and
+//          Learned to `manipulate and implement save and load functionality from the JsonSerializationDemo and
 //          reused code from JsonSerializationDemo's WorkRoomApp Class for the methods in this class
 
 

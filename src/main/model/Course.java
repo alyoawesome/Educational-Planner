@@ -39,15 +39,18 @@ public class Course implements Writable {
     // REQUIRES: The assignment the user wants to delete must already be in the course's list of assignments
     // MODIFIES: this
     // EFFECTS: deletes an assignment from the course's list of assignments
-    public void deleteAssignment(String assignment) {
-        int assignmentToBeDeletedIndex = 0;
+    public String deleteAssignment(String assignment) {
+        ArrayList<Assignment> assign = this.assignments;
+        String m = " (Not Done)";
         for (Assignment a : this.assignments) {
             String name = a.getName();
             if (name.equals(assignment)) {
-                assignmentToBeDeletedIndex = assignmentToBeDeletedIndex + this.assignments.indexOf(a);
+                this.assignments.remove(this.assignments.indexOf(a));
+                m = " (Done)";
+                break;
             }
         }
-        this.assignments.remove(assignmentToBeDeletedIndex);
+        return m;
     }
 
     // MODIFIES: this
