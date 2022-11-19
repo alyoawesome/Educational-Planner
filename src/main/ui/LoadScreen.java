@@ -9,7 +9,7 @@ import javax.swing.*;
 public class LoadScreen extends JFrame {
 
     private JFrame frame = new JFrame();
-    private ImageIcon icon = new ImageIcon("./data/tobs.jpg");
+    private ImageIcon icon = new ImageIcon("./data/logo.png");
     private JLabel label = new JLabel(icon);
 
     //MODIFIES: this
@@ -21,7 +21,7 @@ public class LoadScreen extends JFrame {
         frame.pack();
         frame.setVisible(true);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
