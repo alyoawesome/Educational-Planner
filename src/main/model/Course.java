@@ -28,7 +28,8 @@ public class Course implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds assignment to the course's list of assignments if not already in the list, else provides an error
-    //          saying that the assignments has already been added
+    //          saying that the assignments has already been added, and it also logs 2 events indicating that
+    //          an assignment has been added to this course and to the "all assignments" panel
     public void addAssignment(Assignment assignment) {
         String name = assignment.getName();
         if (!this.assignments.contains(assignment)) {
@@ -44,7 +45,8 @@ public class Course implements Writable {
 
     // REQUIRES: The assignment the user wants to delete must already be in the course's list of assignments
     // MODIFIES: this
-    // EFFECTS: deletes an assignment from the course's list of assignments
+    // EFFECTS: deletes an assignment from the course's list of assignments, and it also logs 2 events indicating that
+    //          an assignment has been deleted from this course and from the "all assignments" panel
     public void deleteAssignment(String assignment) {
         for (Assignment a : this.assignments) {
             String name = a.getName();

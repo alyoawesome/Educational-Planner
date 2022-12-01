@@ -110,8 +110,8 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
     }
 
 
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: converts the events to strings and prints them out line by line
     public void printLog(EventLog el) {
         for (Event next : el) {
             System.out.print((next.toString() + "\n\n"));
