@@ -2,6 +2,8 @@ package ui;
 
 import model.Assignment;
 import model.Course;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -13,6 +15,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,11 +25,13 @@ import java.util.Scanner;
 import static java.awt.BorderLayout.CENTER;
 
 
-// CITATION: Reused code from ListDemo and SpaceInvaders
+// CITATION: Reused code from ListDemo, SpaceInvaders, and AlarmSystem
 //           Also learned about how to implement and configure scrollPanes using:
 //           http://www.java2s.com/example/java-api/java/awt/borderlayout/page_end-3.html
 //           Also learned about how to implement and use documentListeners for the addCourseListener using:
 //           https://docs.oracle.com/javase/tutorial/uiswing/events/documentlistener.html
+//           Also learned about how to print strings to console after closing the GUI using:
+//           https://stackoverflow.com/questions/61401974/windowclosing-method-is-not-getting-called
 
 // This represents the Educational Planner's graphic user interface
 public class GUI extends JPanel implements ListSelectionListener, ActionListener {
@@ -46,6 +52,7 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
 
 
     private static final String loadAll = "Load All Data";
+    private static final String showAllAssignment = "Show All Assignment";
     private JTextArea addA;
     private JTextArea delA;
     private JButton addCButton;
@@ -76,12 +83,19 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes the jFrame and adds a default course into the Course dropdown
+    // EFFECTS: initializes the jFrame and adds a default course into the Course dropdown, and also logs the addition
+    // and deletion of any assignment into the console when the user quits the GUI
     public void init() {
-        JFrame jframe = new JFrame("Swing GUI DEMO");
-        jframe.setSize(760, 450);
+        JFrame jframe = new JFrame("Educational Planner");
+        jframe.setSize(1000, 550);
         jframe.getContentPane();
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        jframe.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                printLog(EventLog.getInstance());
+                jframe.dispose();
+            }
+        });
         jframe.add(this);
         jframe.setVisible(true);
 
@@ -92,6 +106,16 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
         listModel = new DefaultListModel();
         listModel.addElement("Biology");
         addCourse("Biology");
+
+    }
+
+
+    // MODIFIES:
+    // EFFECTS:
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.print((next.toString() + "\n\n"));
+        }
 
     }
 
@@ -207,6 +231,9 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
             repaint();
         } else if (e.getActionCommand().equals(saveAll)) {
             saveCourse();
+            repaint();
+        } else if (e.getActionCommand().equals(showAllAssignment)) {
+            showAllAssignment();
             repaint();
         }
     }
@@ -352,6 +379,11 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
         }
     }
 
+    // EFFECTS: Show all assignments
+    private void showAllAssignment() {
+        message = "Show all assignments";
+    }
+
     // MODIFIES: this
     // EFFECTS: loads course from file
     private void loadCourse() {
@@ -378,6 +410,7 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
         }
     }
 
+
     // MODIFIES: this
     //EFFECTS: makes the assignment pane that shows a course's assignments and a course's overall average
     // for any selected course
@@ -385,46 +418,56 @@ public class GUI extends JPanel implements ListSelectionListener, ActionListener
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.blue);
-
-        g2d.setFont(new Font("default", Font.PLAIN, 14));
-
-        String courseName = courses.get(index).getCourseName();
+        g2d.setFont(new Font("default", Font.BOLD, 14));
 
         paintAssignmentDetails(g);
-        g2d.drawString("Course Selected: " + courseName, 80, 190);
-        g2d.drawString("Course Number: " + String.valueOf(index), 350, 190);
+        paintAllAssignmentDetails(g);
+        g2d.drawString("Message: " + message, 80, 470);
 
-        g2d.drawString("Message: " + message, 80, 350);
     }
 
     // MODIFIES: this
     //EFFECTS: Writes the assignment's name, grade, and the selected course's overall average using blue font
     public void paintAssignmentDetails(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
         Double avg = calculateOverallAverage(index);
         String avg1 = "";
         if (avg > 0.0) {
             avg1 = String.valueOf(avg);
         }
-        Graphics2D g2d = (Graphics2D) g;
+        String courseName = courses.get(index).getCourseName();
         g2d.setColor(Color.blue);
         ArrayList<Assignment> assignList = courses.get(index).getAssignments();
-        g2d.drawString("No.      Assignments: ", 80, 220);
+        g2d.drawString("Course Selected: " + courseName, 80, 190);
+        g2d.drawString("No.      Assignments:      Grade:      Average:", 80, 220);
         for (int i = 0; i < assignList.size(); i++) {
             g2d.drawString(String.valueOf(i), 85, 240 + i * 20);
-            g2d.drawString(assignList.get(i).getName(),
-                    140,
-                    240 + i * 20);
+            g2d.drawString(assignList.get(i).getName(), 140, 240 + i * 20);
+            g2d.drawString(assignList.get(i).getGrade() + "", 260, 240 + i * 20);
         }
-        g2d.drawString("Grade: ", 250, 220);
-        for (int i = 0; i < assignList.size(); i++) {
-            g2d.drawString(assignList.get(i).getGrade() + "",
-                    260,
-                    240 + i * 20);
-        }
-        g2d.drawString("Average: ", 350, 220);
-        g2d.drawString(avg1, 360, 240);
-
+        g2d.drawString(avg1, 320, 240);
     }
 
+    // MODIFIES: this
+    //EFFECTS: Writes all assignment's name and grades of all courses using blue font
+    public void paintAllAssignmentDetails(Graphics g) {
+        int y = 240;
 
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawString("All Assignments: ", 500, 190);
+        for (int x = 0; x < courses.size(); x++) {
+
+            g2d.setColor(Color.blue);
+            ArrayList<Assignment> assignList = courses.get(x).getAssignments();
+            int assignmentSize = assignList.size();
+            g2d.drawString("Course:      Assignments:       Grade:", 500, 220);
+            for (int i = 0; i < assignList.size(); i++) {
+                g2d.drawString(courses.get(x).getCourseName(), 500, y + i * 20);
+                g2d.drawString(assignList.get(i).getName(), 590, y + (i) * 20);
+                g2d.drawString(String.valueOf(assignList.get(i).getGrade()), 710, y + (i) * 20);
+            }
+            y = y + assignmentSize * 20;
+        }
+    }
 }
+

@@ -38,4 +38,26 @@ loading screen before the user is shown the Educational Planner GUI
 - You can save the state of my application by pressing on the "Save All Data" button
 - You can reload the state of my application by pressing on the "Load All Data" button
 
-  
+# Phase 4: Task 2
+
+Here is an example of a user adding a test assignment to their math course and to the "all assignments"
+panel, adding a project assignment to their biology course and to the "all assignments" panel, and deleting a test 
+assignment from their math course and from the "all assignments" panel. 
+
+Wed Nov 30 21:14:05 PST 2022
+Added Assignment: test to math
+
+Wed Nov 30 21:14:05 PST 2022
+Added Assignment: test to all assignments panel
+
+Wed Nov 30 21:14:32 PST 2022
+Added Assignment: project to Biology
+
+Wed Nov 30 21:14:32 PST 2022
+Added Assignment: project to all assignments panel
+
+Wed Nov 30 21:14:52 PST 2022
+Deleted Assignment: test from math
+
+Wed Nov 30 21:14:52 PST 2022
+Deleted Assignment: test from all assignments panel

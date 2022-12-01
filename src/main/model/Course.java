@@ -6,7 +6,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
-//CITATION: Reused code from JsonSerializationDemo's WorkRoom Class for the methods in this class
+//CITATION: Reused code from AlarmSystem and JsonSerializationDemo's WorkRoom Class for the methods in this class
 
 //Represents a course having a name, an overall average (in percent), and a list of assignments
 public class Course implements Writable {
@@ -25,12 +25,18 @@ public class Course implements Writable {
     }
 
 
+
     // MODIFIES: this
     // EFFECTS: adds assignment to the course's list of assignments if not already in the list, else provides an error
     //          saying that the assignments has already been added
     public void addAssignment(Assignment assignment) {
+        String name = assignment.getName();
         if (!this.assignments.contains(assignment)) {
             this.assignments.add(assignment);
+            EventLog.getInstance().logEvent(new Event("Added Assignment:"
+                    + " " + name + " " + "to" + " " + this.name));
+            EventLog.getInstance().logEvent(new Event("Added Assignment:"
+                    + " " + name + " " + "to all assignments panel"));
         } else {
             System.out.println("ERROR, assignment already in course!");
         }
@@ -44,6 +50,10 @@ public class Course implements Writable {
             String name = a.getName();
             if (name.equals(assignment)) {
                 this.assignments.remove(this.assignments.indexOf(a));
+                EventLog.getInstance().logEvent(new Event("Deleted Assignment:"
+                        + " " + name + " " + "from" + " " + this.name));
+                EventLog.getInstance().logEvent(new Event("Deleted Assignment:"
+                        + " " + name + " " + "from all assignments panel"));
                 break;
             }
         }

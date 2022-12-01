@@ -1,24 +1,34 @@
 {"courses": [
     {
-        "assignments": [],
+        "assignments": [{
+            "grade": 98,
+            "name": "pot"
+        }],
         "name": "Biology"
     },
     {
-        "assignments": [{
-            "grade": 99,
-            "name": "test"
-        }],
+        "assignments": [
+            {
+                "grade": 98,
+                "name": "test"
+            },
+            {
+                "grade": 98,
+                "name": "pot"
+            },
+            {
+                "grade": 98,
+                "name": "pot"
+            },
+            {
+                "grade": 98,
+                "name": "pot"
+            },
+            {
+                "grade": 98,
+                "name": "pot"
+            }
+        ],
         "name": "math"
-    },
-    {
-        "assignments": [{
-            "grade": 97,
-            "name": "test"
-        }],
-        "name": "science"
-    },
-    {
-        "assignments": [],
-        "name": "physics"
     }
 ]}
