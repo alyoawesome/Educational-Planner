@@ -61,3 +61,30 @@ Deleted Assignment: test from math
 
 Wed Nov 30 21:14:52 PST 2022
 Deleted Assignment: test from all assignments panel
+
+# Phase 4: Task 3
+If I had more time to work on this project, I
+would try refactoring it by:
+
+- To increase cohesion, the GUI class should be split into several different classes – a "CoursePanel" class, 
+an "AssignmentPanel" class, and a "Paint" class. The CoursePanel class would be 
+responsible for managing the complete functionality and display of adding courses into the 
+EducationalPlanner, i.e., it would contain the code for the course scrollpane, the course name input, and 
+add course button components. The "AssignmentPanel" class would be responsible for managing the complete 
+functionality and display of adding and deleting assignments from any course, i.e., it would contain the code for the 
+assignment's name and grade inputs and the add/delete assignment button components. The "Paint" class would be
+responsible for managing the complete functionality and display of anything to do with repainting, i.e., it would 
+contain the code for showing each assignment's name and grade for any selected course, along with the code for showing
+all the assignments.
+
+
+- To decrease duplication, I would try extracting the heavily duplicated code in the "paintAllAssignmentDetails" and 
+"paintAssignmentDetails" methods into just one method, which would allow for lower coupling because I would just need
+to change code in one place if I wanted to change the colour, font, or any other display configurations for showing
+each assignment's name and grade for any selected course and for showing every inputted assignment
+
+
+- For better clarity in naming, I would extract the for-loops in the "loadCourse" method into methods called 
+"clearCourseList" for the first for-loop and "loadCourseListFromJson" for the second for-loop. This would allow
+programmers to quickly understand this part of the program instead of having to spend time reading through 
+considerable chunks of complex code to figure out what's going on
