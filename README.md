@@ -27,7 +27,7 @@ assignments to file
 assignments from file
 
 
-# Log Examples
+## Event log examples
 
 Here is an example of a user adding a test assignment to their math course and to the "all assignments"
 panel, adding a project assignment to their biology course and to the "all assignments" panel, and deleting a test 
